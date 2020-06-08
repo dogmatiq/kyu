@@ -54,16 +54,16 @@ var _ = Context("min/max heap", func() {
 			}
 
 			for _, x := range values {
-				v := PopMin(&subject)
+				v := Pop(&subject)
 				Expect(v).To(Equal(x))
 			}
 		})
 	})
 
-	Describe("func PopMin()", func() {
+	Describe("func Pop()", func() {
 		It("removes the elements from smallest to largest", func() {
 			for _, x := range values {
-				v := PopMin(&subject)
+				v := Pop(&subject)
 				Expect(v).To(Equal(x))
 			}
 		})
@@ -109,7 +109,7 @@ var _ = Context("min/max heap", func() {
 				}
 
 				for _, x := range values {
-					v := PopMin(&subject)
+					v := Pop(&subject)
 					Expect(v).To(Equal(x))
 				}
 			},
@@ -139,7 +139,7 @@ var _ = Context("min/max heap", func() {
 				)
 
 				for _, x := range values {
-					v := PopMin(&subject)
+					v := Pop(&subject)
 					Expect(v).To(Equal(x))
 				}
 			},

@@ -1,3 +1,8 @@
-module github.com/dogmatiq/GITHUB_REPO_NAME
+module github.com/dogmatiq/kyu
 
 go 1.13
+
+require (
+	github.com/onsi/ginkgo v1.12.3
+	github.com/onsi/gomega v1.10.1
+)

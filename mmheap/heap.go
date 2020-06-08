@@ -24,9 +24,9 @@ func Push(h heap.Interface, x interface{}) {
 	up(h, i, i+1)
 }
 
-// PopMin removes and returns the minimum element (according to Less) from the
+// Pop removes and returns the minimum element (according to Less) from the
 // heap.
-func PopMin(h heap.Interface) interface{} {
+func Pop(h heap.Interface) interface{} {
 	i := h.Len() - 1
 	h.Swap(0, i)
 	down(h, 0, i)
