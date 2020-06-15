@@ -58,18 +58,37 @@ func (q *PQueue) Pop() (v interface{}, ok bool) {
 	return v, true
 }
 
+// Contains returns true if e is in the queue.
+func (q *PQueue) Contains(e *Element) bool {
+	if e.index < 0 || e.index >= q.h.Len() {
+		return false
+	}
+
+	return q.h.elements[e.index] == e
+}
+
 // IsFront returns true if e is at the front of the queue.
 func (q *PQueue) IsFront(e *Element) bool {
+	if q.h.Len() == 0 {
+		return false
+	}
+
 	return q.h.elements[0] == e
 }
 
 // Update reorders the queue to reflect a change in e.Value that might cause e
 // to occupy a different position within in the queue.
 func (q *PQueue) Update(e *Element) {
+	if !q.Contains(e) {
+		panic("element is not on the queue")
+	}
+
 	heap.Fix(&q.h, e.index)
 }
 
 // Remove removes e from the queue.
 func (q *PQueue) Remove(e *Element) {
-	heap.Remove(&q.h, e.index)
+	if q.Contains(e) {
+		heap.Remove(&q.h, e.index)
+	}
 }

@@ -98,6 +98,33 @@ var _ = Describe("type PQueue", func() {
 		})
 	})
 
+	Describe("func Contains()", func() {
+		It("returns true if the element is in the queue", func() {
+			e := queue.Push(0)
+			Expect(queue.Contains(e)).To(BeTrue())
+		})
+
+		It("returns true if the element is in a different queue", func() {
+			var q PQueue
+			e := q.Push(0)
+			Expect(queue.Contains(e)).To(BeFalse())
+		})
+
+		It("returns false if the element has been removed from the queue", func() {
+			e := queue.Push(0)
+			queue.Pop()
+			Expect(queue.Contains(e)).To(BeFalse())
+		})
+	})
+
+	Describe("func IsFront()", func() {
+		It("returns false if the element is not in the queue", func() {
+			e := queue.Push(0)
+			queue.Pop()
+			Expect(queue.IsFront(e)).To(BeFalse())
+		})
+	})
+
 	Describe("func Update()", func() {
 		It("repairs the queue order", func() {
 			queue.Push(10)
@@ -107,6 +134,15 @@ var _ = Describe("type PQueue", func() {
 			e.Value = 5
 			queue.Update(e)
 			Expect(queue.IsFront(e)).To(BeTrue())
+		})
+
+		It("panics if the element is not on the queue", func() {
+			e := queue.Push(0)
+			queue.Pop()
+
+			Expect(func() {
+				queue.Update(e)
+			}).To(PanicWith("element is not on the queue"))
 		})
 	})
 
@@ -125,6 +161,12 @@ var _ = Describe("type PQueue", func() {
 			v, ok = queue.Pop()
 			Expect(ok).To(BeTrue())
 			Expect(v).To(Equal(30))
+		})
+
+		It("does not panic if the element is not in the queue", func() {
+			e := queue.Push(0)
+			queue.Pop()
+			queue.Remove(e)
 		})
 	})
 })
