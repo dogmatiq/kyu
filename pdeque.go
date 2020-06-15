@@ -89,13 +89,30 @@ func (q *PDeque) PopBack() (v interface{}, ok bool) {
 	return v, true
 }
 
+// Contains returns true if e is in the queue.
+func (q *PDeque) Contains(e *Element) bool {
+	if e.index < 0 || e.index >= q.h.Len() {
+		return false
+	}
+
+	return q.h.elements[e.index] == e
+}
+
 // IsFront returns true if e is at the front of the queue.
 func (q *PDeque) IsFront(e *Element) bool {
+	if q.h.Len() == 0 {
+		return false
+	}
+
 	return q.h.elements[0] == e
 }
 
 // IsBack returns true if e is at the back of the queue.
 func (q *PDeque) IsBack(e *Element) bool {
+	if q.h.Len() == 0 {
+		return false
+	}
+
 	i := mmheap.Max(&q.h)
 	return q.h.elements[i] == e
 }
@@ -103,12 +120,18 @@ func (q *PDeque) IsBack(e *Element) bool {
 // Update reorders the queue to reflect a change in e.Value that might cause e
 // to occupy a different position within in the queue.
 func (q *PDeque) Update(e *Element) {
+	if !q.Contains(e) {
+		panic("element is not on the queue")
+	}
+
 	mmheap.Fix(&q.h, e.index)
 }
 
 // Remove removes e from the queue.
 func (q *PDeque) Remove(e *Element) {
-	mmheap.Remove(&q.h, e.index)
+	if q.Contains(e) {
+		mmheap.Remove(&q.h, e.index)
+	}
 }
 
 // Inverse returns an inverted "view" of q, such that q.Inverse().Pop() is

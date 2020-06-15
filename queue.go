@@ -36,6 +36,9 @@ type Queue interface {
 	// If the queue is empty, v is nil and ok is false.
 	Pop() (v interface{}, ok bool)
 
+	// Contains returns true if e is in the queue.
+	Contains(e *Element) bool
+
 	// IsFront returns true if e is at the front of the queue.
 	IsFront(e *Element) bool
 
