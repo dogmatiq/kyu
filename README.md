@@ -1,4 +1,4 @@
-# Kyu
+# NoThanKyu
 
 [![Build Status](https://github.com/dogmatiq/kyu/workflows/CI/badge.svg)](https://github.com/dogmatiq/kyu/actions?workflow=CI)
 [![Code Coverage](https://img.shields.io/codecov/c/github/dogmatiq/kyu/master.svg)](https://codecov.io/github/dogmatiq/kyu)
