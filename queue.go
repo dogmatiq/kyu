@@ -2,7 +2,7 @@ package kyu
 
 // Element is a container for a value on a queue.
 //
-// It couple's the element's value with queue-specific meta-data that allows
+// It couples the element's value with queue-specific meta-data that allows
 // manipulation of the element while it is on the queue.
 type Element struct {
 	// Value is the value associated with the element.
