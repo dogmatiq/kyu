@@ -6,7 +6,7 @@ package kyu
 // manipulation of the element while it is on the queue.
 type Element struct {
 	// Value is the value associated with the element.
-	Value interface{}
+	Value any
 
 	index int
 }
@@ -23,7 +23,7 @@ type Queue interface {
 	// Push adds a new value to the queue.
 	//
 	// It returns the element that contains that value.
-	Push(v interface{}) *Element
+	Push(v any) *Element
 
 	// Peek returns the element at the front of the queue without removing it
 	// from the queue.
@@ -34,7 +34,7 @@ type Queue interface {
 	// Pop removes the element at the front of the queue and returns its value.
 	//
 	// If the queue is empty, v is nil and ok is false.
-	Pop() (v interface{}, ok bool)
+	Pop() (v any, ok bool)
 
 	// Contains returns true if e is in the queue.
 	Contains(e *Element) bool

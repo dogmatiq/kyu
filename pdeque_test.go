@@ -11,7 +11,7 @@ var _ = Describe("type PDeque", func() {
 
 	BeforeEach(func() {
 		queue = &PDeque{
-			Less: func(a, b interface{}) bool {
+			Less: func(a, b any) bool {
 				return a.(int) < b.(int)
 			},
 		}

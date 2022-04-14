@@ -18,7 +18,7 @@ func Init(h heap.Interface) {
 }
 
 // Push pushes the element x onto the heap.
-func Push(h heap.Interface, x interface{}) {
+func Push(h heap.Interface, x any) {
 	i := h.Len()
 	h.Push(x)
 	up(h, i, i+1)
@@ -26,7 +26,7 @@ func Push(h heap.Interface, x interface{}) {
 
 // Pop removes and returns the minimum element (according to Less) from the
 // heap.
-func Pop(h heap.Interface) interface{} {
+func Pop(h heap.Interface) any {
 	i := h.Len() - 1
 	h.Swap(0, i)
 	down(h, 0, i)
@@ -36,7 +36,7 @@ func Pop(h heap.Interface) interface{} {
 
 // PopMax removes and returns the maximum element (according to Less) from the
 // heap.
-func PopMax(h heap.Interface) interface{} {
+func PopMax(h heap.Interface) any {
 	n := h.Len()
 	i := indexOfMax(h, n)
 	j := n - 1
@@ -48,7 +48,7 @@ func PopMax(h heap.Interface) interface{} {
 }
 
 // Remove removes and returns the element at index i from the heap.
-func Remove(h heap.Interface, i int) interface{} {
+func Remove(h heap.Interface, i int) any {
 	n := h.Len()
 	j := n - 1
 

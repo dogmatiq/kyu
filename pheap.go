@@ -3,7 +3,7 @@ package kyu
 // pheap is an implementation of heap.Interface that stores *Element. It is the
 // underlying storage for the priority queue implementations.
 type pheap struct {
-	less     func(a, b interface{}) bool
+	less     func(a, b any) bool
 	elements []*Element
 }
 
@@ -29,13 +29,13 @@ func (h *pheap) Swap(i, j int) {
 	wasI.index = j
 }
 
-func (h *pheap) Push(x interface{}) {
+func (h *pheap) Push(x any) {
 	e := x.(*Element)
 	e.index = len(h.elements)
 	h.elements = append(h.elements, e)
 }
 
-func (h *pheap) Pop() interface{} {
+func (h *pheap) Pop() any {
 	i := len(h.elements) - 1
 
 	e := h.elements[i]

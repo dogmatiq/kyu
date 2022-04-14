@@ -11,7 +11,7 @@ import (
 // queue.
 type PDeque struct {
 	// Less returns true if a should be closer to the front of the queue than b.
-	Less func(a, b interface{}) bool
+	Less func(a, b any) bool
 
 	h pheap
 }
@@ -24,7 +24,7 @@ func (q *PDeque) Len() int {
 // Push adds a new value to the queue.
 //
 // It returns the element that contains that value.
-func (q *PDeque) Push(v interface{}) *Element {
+func (q *PDeque) Push(v any) *Element {
 	if q.h.elements == nil {
 		q.h.less = q.Less
 	}
@@ -63,7 +63,7 @@ func (q *PDeque) PeekBack() (e *Element, ok bool) {
 // Pop removes the element at the front of the queue and returns its value.
 //
 // If the queue is empty, v is nil and ok is false.
-func (q *PDeque) Pop() (v interface{}, ok bool) {
+func (q *PDeque) Pop() (v any, ok bool) {
 	if q.h.Len() == 0 {
 		return nil, false
 	}
@@ -77,7 +77,7 @@ func (q *PDeque) Pop() (v interface{}, ok bool) {
 // PopBack removes the element at the back of the queue and returns its value.
 //
 // If the queue is empty, v is nil and ok is false.
-func (q *PDeque) PopBack() (v interface{}, ok bool) {
+func (q *PDeque) PopBack() (v any, ok bool) {
 	i := mmheap.Max(&q.h)
 	if i == -1 {
 		return nil, false
@@ -148,7 +148,7 @@ func (q inverse) Peek() (e *Element, ok bool) {
 	return q.PeekBack()
 }
 
-func (q inverse) Pop() (v interface{}, ok bool) {
+func (q inverse) Pop() (v any, ok bool) {
 	return q.PopBack()
 }
 

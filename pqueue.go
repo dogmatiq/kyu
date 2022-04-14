@@ -8,7 +8,7 @@ import "container/heap"
 // queue. The lowest elements appear towards the front of the queue.
 type PQueue struct {
 	// Less returns true if a should be closer to the front of the queue than b.
-	Less func(a, b interface{}) bool
+	Less func(a, b any) bool
 
 	h pheap
 }
@@ -21,7 +21,7 @@ func (q *PQueue) Len() int {
 // Push adds a new value to the queue.
 //
 // It returns the element that contains that value.
-func (q *PQueue) Push(v interface{}) *Element {
+func (q *PQueue) Push(v any) *Element {
 	if q.h.elements == nil {
 		q.h.less = q.Less
 	}
@@ -47,7 +47,7 @@ func (q *PQueue) Peek() (e *Element, ok bool) {
 // Pop removes the element at the front of the queue and returns its value.
 //
 // If the queue is empty, v is nil and ok is false.
-func (q *PQueue) Pop() (v interface{}, ok bool) {
+func (q *PQueue) Pop() (v any, ok bool) {
 	if q.h.Len() == 0 {
 		return nil, false
 	}
