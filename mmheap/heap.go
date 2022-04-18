@@ -164,7 +164,7 @@ func upX(h heap.Interface, less compare, i, n int) {
 	}
 }
 
-// down moves the element at i downards within the heap until it occupies an
+// down moves the element at i downwards within the heap until it occupies an
 // appropriate node.
 func down(h heap.Interface, i, n int) bool {
 	if isOnMinLevel(i) {
