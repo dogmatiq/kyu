@@ -11,6 +11,11 @@ Queue data structure implementations for Go.
 
 </div>
 
+> **This project is deprecated.**
+>
+> This repository will be archived once it is no longer used by other Dogmatiq
+> projects.
+
 It includes a [min-max heap
 implementation](https://en.wikipedia.org/wiki/Min-max_heap) that is a drop-in
 replacement for Go's [container/heap](https://pkg.go.dev/container/heap?tab=doc)
