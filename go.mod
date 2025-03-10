@@ -1,7 +1,8 @@
 module github.com/dogmatiq/kyu
 
-go 1.22
-toolchain go1.22.5
+go 1.22.0
+
+toolchain go1.23.6
 
 require (
 	github.com/onsi/ginkgo v1.16.5
